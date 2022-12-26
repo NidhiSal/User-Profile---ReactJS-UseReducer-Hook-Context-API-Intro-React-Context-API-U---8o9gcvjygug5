@@ -1,20 +1,23 @@
-function lucky_sevens(arr) {
-  // if less than 3 elements then this challenge is not possible
+import React, { createContext, useContext } from 'react'
 
-  if (arr.length < 3) {
-    return "not possible";
-  }
 
-  // because we know there are at least 3 elements we can
-  // start the loop at the 3rd element in the array (i=2)
-  // and check it along with the two previous elements (i-1) and (i-2)
+import '../styles/App.css';
+import { UserProfile } from './UserProfile';
 
-  for (var i = 2; i < arr.length; i++) {
-    if (arr[i] + arr[i - 1] + arr[i - 2] === 7) {
-      return true;
-    }
-  }
+const UserContext = createContext();
+const App = () => {
 
-  // if loop is finished and no elements summed to 7
-  return false;
+  return (
+    <div id="main">
+      <UserContext.Provider value={{ name: "Newton", age: 3 }}>
+        <UserProfile />
+
+      </UserContext.Provider>
+
+    </div>
+  )
 }
+
+
+export default App;
+export { UserContext };
